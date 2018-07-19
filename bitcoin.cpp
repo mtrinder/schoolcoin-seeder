@@ -170,13 +170,13 @@ class CNode {
       CMessageHeader hdr;
       vRecv >> hdr;
       if (!hdr.IsValid()) { 
-        // printf("%s: BAD (invalid header)\n", ToString(you).c_str());
+        printf("%s: BAD (invalid header)\n", ToString(you).c_str());
         ban = 100000; return true;
       }
       string strCommand = hdr.GetCommand();
       unsigned int nMessageSize = hdr.nMessageSize;
       if (nMessageSize > MAX_SIZE) { 
-        // printf("%s: BAD (message too large)\n", ToString(you).c_str());
+        printf("%s: BAD (message too large)\n", ToString(you).c_str());
         ban = 100000;
         return true; 
       }
@@ -286,7 +286,7 @@ bool TestNode(const CService &cip, int &ban, int &clientV, std::string &clientSV
     clientV = node.GetClientVersion();
     clientSV = node.GetClientSubVersion();
     blocks = node.GetStartingHeight();
-//  printf("%s: %s!!!\n", cip.ToString().c_str(), ret ? "GOOD" : "BAD");
+    printf("%s: %s!!!\n", cip.ToString().c_str(), ret ? "GOOD" : "BAD");
     return ret;
   } catch(std::ios_base::failure& e) {
     ban = 0;
