@@ -344,9 +344,6 @@ static const string testnet_seeds[] = {""};
 static const string *seeds = mainnet_seeds;
 
 extern "C" void* ThreadSeeder(void*) {
-  if (!fTestNet){
-    db.Add(CService("207.148.83.40", GetDefaultPort()), true);
-  }
   do {
     for (int i=0; seeds[i] != ""; i++) {
       vector<CNetAddr> ips;
